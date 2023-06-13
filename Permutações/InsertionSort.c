@@ -2,27 +2,19 @@
 #include <stdlib.h>
 #include <locale.h>
 
-void imprimeArrayOrdenado(int* array, int* arrayInsertioSort, int comprimento) {
+void imprimeArray(int* array, int comprimento, char* texto) {
 
 	int i;
 
-	printf("\nArray original:\n");
+	printf("\n%s\n", texto);
 
 	for (i = 0; i < comprimento; i++)
 	{
-		printf("\nPosição %d - %d", i, array[i]);
+		printf("\nPosiÃ§Ã£o %d - %d", i, array[i]);
 	}
 
 	printf("\n");
 
-	printf("\nArray ordenado:\n");
-
-	for (i = 0; i < comprimento; i++)
-	{
-		printf("\nPosição %d - %d", i, arrayInsertioSort[i]);
-	}
-
-	printf("\n");
 }
 
 void InsertionSort(int* array, int comprimento) {
@@ -48,9 +40,12 @@ void InsertionSort(int* array, int comprimento) {
 		arrayInsertionSort[i + 1] = chave;
 	}
 
-	imprimeArrayOrdenado(array, arrayInsertionSort, comprimento);
+	imprimeArray(array, comprimento, "Array original");
+
+	imprimeArray(arrayInsertionSort, comprimento, "Array Insertion Sort");
 
 	free(arrayInsertionSort);
+	free(array);
 }
 
 int main() {
@@ -65,9 +60,9 @@ int main() {
 		array[i] = valores[i];
 	}
 
-	printf("Permutações");
+	printf("PermutaÃ§Ãµes");
 	printf("\n");
-	printf("Ordenação por inserção - Insertion-Sort");
+	printf("OrdenaÃ§Ã£o por inserÃ§Ã£o - Insertion-Sort");
 	printf("\n");
 
 	InsertionSort(array, comprimento);
